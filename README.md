@@ -12,7 +12,7 @@
 - Adjusting training iterations and the regularization coefficient affected accuracy trends.
 - The sigmoid function outperformed other activation functions.
 
-## Experiment 2: Experimental Environment Configuration and Convolutional Neural Network
+## Experiment 2: Convolutional Neural Network Application
 ### Content
 - **Environment Configuration**: Set up Python and TensorFlow, and use Google Colab for efficient model training.
 - **Data Preprocessing**: Load the CIFAR-10 dataset, normalize image data to [0, 1], and one-hot encode labels.
@@ -39,3 +39,6 @@
 - The spam classification model showed high accuracy, with certain词汇 having high weights for spam identification.
 
   ## Running Steps
+1. Experiment 1 can be run directly in MATLAB.  
+2. Experiment 2 is recommended to be run in PyCharm with the Python 3.7 (tensorflow) interpreter (included in the Codes), but it is more advisable to use online platforms like Colab or Kaggle.  
+3. Experiment 3 can be run directly in PyCharm by installing the required libraries.
