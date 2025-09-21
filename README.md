@@ -36,9 +36,29 @@
 - Linear SVM showed significant decision boundary changes with different C values, with higher C leading to closer data fitting but potential overfitting.
 - Non-linear SVM with the Gaussian kernel effectively handled non-linear data, with sigma significantly impacting classification.
 - Optimal parameters found: C=0.2 and σ=0.01, with low validation error.
-- The spam classification model showed high accuracy, with certain词汇 having high weights for spam identification.
+- The spam classification model showed high accuracy, with certain words having high weights for spam identification.
 
   ## Running Steps
 1. Experiment 1 can be run directly in MATLAB.  
 2. Experiment 2 is recommended to be run in PyCharm with the Python 3.7 (tensorflow) interpreter (included in the Codes), but it is more advisable to use online platforms like Colab or Kaggle.  
 3. Experiment 3 can be run directly in PyCharm by installing the required libraries.
+
+## Experiment 4: Recurrent Neural Network for Speech Denoising
+### Content
+- **Data Preparation and Preprocessing**: Load the NOIZEUS dataset containing clean and noisy audio samples. Preprocess the audio by extracting STFT-based spectrograms and segmenting them into fixed-size inputs for the GRU-based RNN model.
+- **Custom Dataset and DataLoader**: Implement a custom PyTorch Dataset class to handle noisy and clean audio pairs, and use DataLoader for batch processing and shuffling.
+- **GRU-based RNN Model**: Construct an 8-layer GRU network with sigmoid activation for predicting an ideal ratio mask (IRM) to denoise speech signals.
+- **Training and Validation**: Train the model using MSE loss and the Adam optimizer, with the option to resume training from a pre-trained checkpoint. Validate on a held-out subset.
+- **Visualization and Evaluation**: Develop functions to visualize waveforms and spectrograms, and to play audio before and after denoising for qualitative assessment.
+- **Hyperparameter Tuning**: Experiment with different numbers of training epochs, learning rates, optimizers (Adam vs. SGD), activation functions (Sigmoid vs. ReLU), and network depths to analyze their impact on denoising performance.
+### Results
+- The baseline GRU model achieved effective denoising with a final loss of approximately 0.071.
+- Increasing the number of training epochs (up to 24) consistently improved denoising performance, though gains diminished after 12 epochs.
+- A learning rate of 1e-4 yielded the best results; values too high (e.g., 1e-3) led to training instability.
+- The Adam optimizer outperformed SGD significantly in terms of convergence speed and final loss.
+- Both Sigmoid and ReLU activations performed similarly well in the GRU network.
+- A network depth of 4 to 8 layers provided optimal performance; deeper networks (e.g., 16 layers) showed no further improvement and even degradation.
+- Visualization of waveforms and spectrograms confirmed the model’s ability to reduce noise while preserving speech content.
+
+**About Running**:  
+This experiment is implemented in PyTorch. It is recommended to run it in a Python environment with PyTorch and torchaudio installed. GPU acceleration is supported but requires proper configuration of CUDA and related libraries.
